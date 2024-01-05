@@ -1,8 +1,15 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Roboto_Flex } from "next/font/google";
+import Header from "@/common/components/header/header";
+import ToastProvider from "@/common/context/toastProvider";
 import "@/styles/globals.scss";
 
-const inter = Inter({ subsets: ["latin"] });
+const robotFlex = Roboto_Flex({
+  weight: ["400", "500", "700"],
+  style: ["normal"],
+  subsets: ["latin"],
+  fallback: ["system-ui"],
+});
 
 export const metadata: Metadata = {
   title: "Task Api Next",
@@ -15,8 +22,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="tr">
+      <body className={robotFlex.className} suppressHydrationWarning>
+        <ToastProvider>
+          <Header />
+          {children}
+        </ToastProvider>
+      </body>
     </html>
   );
 }

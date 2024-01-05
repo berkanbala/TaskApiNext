@@ -1,3 +1,49 @@
 .container {
-  background-color: antiquewhite;
+  // display: flex;
+  // background-color: antiquewhite;
+  // width: 100%;
+  // height: auto;
+  // flex-direction: row;
+  // justify-content: flex-end;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  margin: auto;
+  padding: 1.4rem;
+  background-color: rgb(244, 244, 244);
+  box-shadow: 0.2px 0.5px 0.6px hsl(235 30% 62% / 0.25),
+    0.3px 0.8px 1px -1.2px hsl(235 30% 62% / 0.25),
+    0.8px 1.9px 2.3px -2.5px hsl(235 30% 62% / 0.25);
+
+  ul {
+    display: flex;
+    gap: 2rem;
+  }
+
+  a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: 0.2s;
+  }
+
+  a:hover {
+    transform: scale(1.05);
+  }
+
+  li {
+    cursor: pointer;
+
+    &:first-child {
+      margin-right: 50px;
+    }
+
+    &:hover {
+      background-color: cadetblue;
+    }
+
+    &:focus {
+    }
+  }
 }
