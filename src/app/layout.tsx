@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
 import { Roboto_Flex } from "next/font/google";
+import { ToastContainer } from "react-toastify";
+import { AppContextProvider } from "@/common/context/appContext";
 import Header from "@/common/components/header/header";
-import ToastProvider from "@/common/context/toastProvider";
+import "react-toastify/dist/ReactToastify.css";
 import "@/styles/globals.scss";
 
 const robotFlex = Roboto_Flex({
   weight: ["400", "500", "700"],
   style: ["normal"],
   subsets: ["latin"],
-  fallback: ["system-ui"],
+  fallback: ["system-ui", "arial"],
 });
 
 export const metadata: Metadata = {
@@ -24,10 +26,11 @@ export default function RootLayout({
   return (
     <html lang="tr">
       <body className={robotFlex.className} suppressHydrationWarning>
-        <ToastProvider>
+        <AppContextProvider>
           <Header />
           {children}
-        </ToastProvider>
+          <ToastContainer theme="colored" />
+        </AppContextProvider>
       </body>
     </html>
   );

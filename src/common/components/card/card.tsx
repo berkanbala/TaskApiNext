@@ -3,6 +3,14 @@ import styles from "./card.module.scss";
 import { card } from "../card";
 import Logo from "../../media/logo/Logo.png";
 export default function Card() {
+  fetch(`https://dummyapi.io/data/v1/`, {
+    headers: {
+      "app-id": "6599131a502a44c29671781f",
+    },
+  })
+    .then((response) => response.json())
+    .then((json) => console.log(json));
+
   return (
     <div className={styles.container}>
       {card.map((item: any, i: any) => (
