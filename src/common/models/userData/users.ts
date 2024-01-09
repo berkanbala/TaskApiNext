@@ -1,9 +1,11 @@
 export interface IUser {
-  firstName: string;
   id: string;
+  title: string;
+  firstName: string;
   lastName: string;
   picture: string;
-  title: string;
+  // image: string;
+  // text: string;
 }
 export interface IAllUsers {
   firstName: string;

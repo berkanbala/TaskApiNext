@@ -1,12 +1,11 @@
 "use client";
 import { use, useEffect, useState } from "react";
 import styles from "./cardDetails.module.scss";
-import { IUserDetails } from "@/common/models/userDetails";
+import { IUserDetails } from "@/common/models/userData/userDetails";
 import { usePathname } from "next/navigation";
 import { showNotification } from "@/common/configs/notification";
 import { getUserById } from "@/common/services/userService";
 import Image from "next/image";
-import { title } from "process";
 
 export default function CardDetails() {
   const [user, setUser] = useState<IUserDetails>({} as any);
@@ -33,13 +32,15 @@ export default function CardDetails() {
         <div className={styles.name}>
           Name: {user.title} {user.firstName} {user.lastName}
         </div>
-        <Image
-          src={user?.picture}
-          alt="user picture"
-          width={75}
-          height={75}
-          className={styles.image}
-        />
+        {user.picture && (
+          <Image
+            src={user.picture}
+            alt="user picture"
+            width={75}
+            height={75}
+            className={styles.image}
+          />
+        )}
         <div className={styles.info}>
           E-Mail: {user.email} <br />
           CITY: {user?.location?.city} <br />

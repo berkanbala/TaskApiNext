@@ -5,7 +5,6 @@ export interface IUserDetails {
   lastName: string;
   picture: string;
   email: string;
-  phone: string;
   location: {
     city: string;
     country: string;
