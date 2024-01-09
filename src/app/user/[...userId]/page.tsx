@@ -1,5 +1,5 @@
-import CardDetails from "@/common/components/cardDetails/cardDetails";
+import UserDetails from "@/custom/pages/userDetails/userDetails";
 
 export default function Index() {
-  return <CardDetails />;
+  return <UserDetails />;
 }

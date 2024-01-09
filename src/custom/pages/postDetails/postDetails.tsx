@@ -1,21 +1,22 @@
 "use client";
-import { use, useEffect, useState } from "react";
-import styles from "./cardDetails.module.scss";
-import { IUserDetails } from "@/common/models/userData/userDetails";
+import { useEffect, useState } from "react";
+import styles from "./postDetails.module.scss";
 import { usePathname } from "next/navigation";
 import { showNotification } from "@/common/configs/notification";
 import { getUserById } from "@/common/services/userService";
 import Image from "next/image";
+import { getPostById } from "@/common/services/postService";
+import { IPostDetails } from "@/common/models/posts";
 
-export default function CardDetails() {
-  const [user, setUser] = useState<IUserDetails>({} as any);
+export default function PostDetails() {
+  const [user, setUser] = useState<IPostDetails>({} as any);
   const pathname = usePathname();
   const id = pathname.split("/")[2];
 
   useEffect(() => {
     const getUserData = async () => {
       try {
-        const response = await getUserById(id);
+        const response = await getPostById(id);
         console.log(response);
         setUser({ ...response });
       } catch (error: any) {
@@ -28,7 +29,7 @@ export default function CardDetails() {
 
   return (
     <div className={styles.container}>
-      <div className={styles.card}>
+      {/* <div className={styles.card}>
         <div className={styles.name}>
           Name: {user.title} {user.firstName} {user.lastName}
         </div>
@@ -47,7 +48,7 @@ export default function CardDetails() {
           COUNTRY: {user?.location?.country} <br />
           STATE: {user?.location?.state} <br />
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

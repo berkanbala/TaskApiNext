@@ -23,21 +23,19 @@
   }
 
   a:hover {
-    transform: scale(1.05);
+    transform: scale(1.2);
   }
 
   li {
     cursor: pointer;
+    margin-right: 50px;
 
-    &:first-child {
-      margin-right: 50px;
+    &:last-child {
+      margin-right: 0px;
     }
 
-    &:hover {
-      background-color: cadetblue;
-    }
-
-    &:focus {
+    a {
+      color: #000;
     }
   }
 }

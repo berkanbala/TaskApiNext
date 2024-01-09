@@ -4,7 +4,7 @@ import { ToastContainer } from "react-toastify";
 import { AppContextProvider } from "@/common/context/appContext";
 import Header from "@/common/components/header/header";
 import "react-toastify/dist/ReactToastify.css";
-import "@/styles/globals.scss";
+import "@/assets/styles/globals.scss";
 
 const robotFlex = Roboto_Flex({
   weight: ["400", "500", "700"],

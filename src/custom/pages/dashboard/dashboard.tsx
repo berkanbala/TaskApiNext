@@ -2,34 +2,26 @@
 import { useAppContext } from "@/common/context/appContext";
 import styles from "./dashboard.module.scss";
 import UserCard from "@/custom/components/userCard/userCard";
-import { IUser } from "@/common/models/userData/users";
-import PostCard from "@/custom/components/postCard/postCard";
-import { IPost } from "@/common/models/postData/post";
+import { IUser } from "@/common/models/users/users";
+import { useState } from "react";
+import { useFilter } from "@/common/hooks/useFilter";
+
 export default function Dashboard() {
-  const { userList, postList } = useAppContext();
+  const { userList } = useAppContext();
+  const [search, setSearch] = useState("");
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
+    setSearch(e.target.value);
 
   return (
     <div className={styles.container}>
-      {userList.users.map((item: IUser) => (
-        <UserCard
-          firstName={item.firstName}
-          lastName={item.lastName}
-          picture={item.picture}
-          id={item.id}
-          title={item.title}
-          key={item.id}
-          // image={item.image}
-          // text={item.text}
-        />
-      ))}
-      {postList.post.map((item: IPost) => (
-        <PostCard
-          image={item.image}
-          text={item.text}
-          key={item.id}
-          id={item.id}
-        />
-      ))}
+      <input type="text" value={search} onChange={handleChange} />
+
+      <div className={styles.content}>
+        {useFilter(userList.users, search).map((item: IUser) => (
+          <UserCard user={item} key={item.id} />
+        ))}
+      </div>
     </div>
   );
 }

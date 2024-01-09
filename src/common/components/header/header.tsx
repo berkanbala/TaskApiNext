@@ -9,8 +9,15 @@ export default function Header() {
         <Image alt="home icon" src={Logo} width={32} height={32} />
       </Link>
       <ul>
-        <Link href="/">home</Link>
-        <Link href="/create">create post</Link>
+        <li>
+          <Link href="/">Users</Link>
+        </li>
+        <li>
+          <Link href="/posts">Posts</Link>
+        </li>
+        <li>
+          <Link href="/create">create post</Link>
+        </li>
       </ul>
     </div>
   );
