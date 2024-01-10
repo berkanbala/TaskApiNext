@@ -8,10 +8,10 @@ import { Input } from "@/common/components/ui/input/input";
 import { showNotification } from "@/common/configs/notification";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useParams, usePathname } from "next/navigation";
 
 export default function Edit() {
-  const router = useRouter();
-  const { id } = router.query;
+  const pathname = usePathname();
 
   const [isMounted, setIsMounted] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -25,6 +25,8 @@ export default function Edit() {
     { value: "chihuahua", label: "Chihuahua" },
   ];
 
+  useEffect(() => setIsMounted(true), []);
+
   const { values, handleChange, setFieldValue, handleSubmit } = useFormik({
     initialValues: {
       image: "",
@@ -37,7 +39,7 @@ export default function Edit() {
         actions.resetForm();
         setLoading(true);
         console.log(values);
-        router.push(`/${id}`);
+        // router.push(`/${id}`);
         showNotification("success", "başarıyla düzeltildi");
       } catch (error) {
         showNotification("error", "hata");
@@ -47,11 +49,10 @@ export default function Edit() {
     },
   });
 
-  useEffect(() => setIsMounted(true), []);
   return (
     <div className={styles.container}>
       <div className={styles.title}>
-        <Link href={`/${id}`}>
+        <Link href={`/user/${pathname.split("/")[2]}`}>
           <Button>Go Back</Button>
         </Link>
         <h1>Edit Post</h1>

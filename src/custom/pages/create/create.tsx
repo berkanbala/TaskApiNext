@@ -20,29 +20,46 @@ export default function Create() {
     { value: "chihuahua", label: "Chihuahua" },
   ];
 
-  const { values, handleChange, setFieldValue, handleSubmit, isSubmitting } =
-    useFormik({
-      initialValues: {
-        image: "",
-        description: "",
-        tags: [],
-      },
-      onSubmit: async (values: any, actions: any) => {
-        try {
-          await new Promise((resolve) => setTimeout(resolve, 1000));
-          actions.resetForm();
-          setLoading(true);
-          console.log(values);
-          showNotification("success", "başarıyla eklendi");
-        } catch (error) {
-          showNotification("error", "hata");
-        } finally {
-          setLoading(false);
-        }
-      },
-    });
-
   useEffect(() => setIsMounted(true), []);
+
+  const {
+    values,
+    handleChange,
+    setFieldValue,
+    handleSubmit,
+    isSubmitting,
+    resetForm,
+  } = useFormik({
+    initialValues: {
+      image: "",
+      description: "",
+      tags: [],
+    },
+    onSubmit: async (values: any) => {
+      try {
+        if (
+          !Object.values([values.image, values.description]).every(
+            (item) => item !== ""
+          ) ||
+          values.tags.length < 1
+        ) {
+          showNotification("error", "Lütfen tüm alanları doldurunuz");
+          return;
+        }
+        setLoading(true);
+        const newTags = values.tags.map((item: any) => item.value);
+        values.tags = newTags;
+        console.log(values);
+        showNotification("success", "başarıyla eklendi");
+        resetForm();
+      } catch (error) {
+        showNotification("error", "hata");
+      } finally {
+        setLoading(false);
+      }
+    },
+  });
+
   return (
     <div className={styles.container}>
       <h1>Create Post</h1>
@@ -56,7 +73,6 @@ export default function Create() {
             onChange={handleChange}
             placeholder="Add an imgur url..."
             disabled={loading}
-            required
           />
         </div>
         <div className={styles.addDescription}>
@@ -68,14 +84,12 @@ export default function Create() {
             onChange={handleChange}
             placeholder="Add a description..."
             disabled={loading}
-            required
           />
         </div>
         <div className={styles.addTags}>
           <span>Tags</span>
           {isMounted ? (
             <Select
-              required
               className={styles.tags}
               isMulti
               id="tags"
@@ -86,6 +100,12 @@ export default function Create() {
               options={options}
               isDisabled={loading}
               value={values.tags}
+              styles={{
+                menu: (baseStyles) => ({
+                  ...baseStyles,
+                  top: 40,
+                }),
+              }}
               // value={
               //   options ? options.find((option) => option.value === values) : ""
               // }
