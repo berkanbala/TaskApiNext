@@ -1,7 +1,7 @@
 "use client";
 import styles from "./postCard.module.scss";
 import Image from "next/image";
-import { IPost } from "@/common/models/posts/post";
+import { IPost } from "@/common/models/posts/posts";
 import Link from "next/link";
 // import { Button } from "@/common/components/ui/button/button";
 // import { useRouter } from "next/router";

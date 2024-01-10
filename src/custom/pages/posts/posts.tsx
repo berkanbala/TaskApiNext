@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { showNotification } from "@/common/configs/notification";
 import { getPosts } from "@/common/services/postService";
 import { postFilter } from "../../../common/hooks/postFilter";
-import { IPost } from "@/common/models/posts/post";
+import { IPost } from "@/common/models/posts/posts";
 import { Input } from "@/common/components/ui/input/input";
 
 export default function Posts() {

@@ -1,5 +1,5 @@
 import { dersigoApiClient } from "../clients/getApiClient";
-import { IPost } from "../models/posts/post";
+import { IPost } from "../models/posts/posts";
 import { IUserDetails } from "../models/users/userDetails";
 import { IAllUsers } from "../models/users/users";
 
