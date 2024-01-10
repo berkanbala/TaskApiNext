@@ -1,15 +1,21 @@
 "use client";
 import Select from "react-select";
 import styles from "./create.module.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useFormik } from "formik";
+import { Button } from "@/common/components/ui/button/button";
 
 export default function Create() {
+  const [isMounted, setIsMounted] = useState(false);
   const [loading, setLoading] = useState(false);
   const options = [
-    { value: "chocolate", label: "Chocolate" },
-    { value: "strawberry", label: "Strawberry" },
-    { value: "vanilla", label: "Vanilla" },
+    { value: "aidi", label: "Aidi" },
+    { value: "german shepherd dog", label: "German Shepherd Dog" },
+    { value: "bulldog", label: "Bulldog" },
+    { value: "shepherd", label: "Shepherd" },
+    { value: "boerboel", label: "Boerboel" },
+    { value: "poodle", label: "Poodle" },
+    { value: "chihuahua", label: "Chihuahua" },
   ];
 
   const [a, b] = useState("s");
@@ -31,14 +37,14 @@ export default function Create() {
     },
   });
 
-  console.log(values);
+  useEffect(() => setIsMounted(true), []);
 
   return (
     <div className={styles.container}>
       <h1>Create Post</h1>
       <form onSubmit={handleSubmit} className={styles.form}>
         <div className={styles.addImage}>
-          <span>Image URL:</span>
+          <span>Image URL</span>
           <input
             type="text"
             name="image"
@@ -49,7 +55,7 @@ export default function Create() {
           />
         </div>
         <div className={styles.addDescription}>
-          <span>Description:</span>
+          <span>Description</span>
           <input
             name="text"
             value={values.description}
@@ -59,20 +65,22 @@ export default function Create() {
           />
         </div>
         <div className={styles.addTags}>
-          <span>Tags:</span>
-          <Select
-            // className={styles.tags}
-            isMulti
-            id="tags"
-            placeholder="Choose tags..."
-            onChange={(e: any) => setFieldValue("tags", e.value)}
-            options={options}
-            isDisabled={loading}
-            value={values.tags}
-          />
+          <span>Tags</span>
+          {isMounted ? (
+            <Select
+              className={styles.tags}
+              isMulti
+              id="tags"
+              placeholder="Choose tags..."
+              onChange={(e: any) => setFieldValue("tags", e.value)}
+              options={options}
+              isDisabled={loading}
+              value={values.tags}
+            />
+          ) : null}
         </div>
         <div className={styles.formButton}>
-          <button type="submit">Submit post</button>
+          <Button type="submit" text={"Submit"} />
         </div>
       </form>
     </div>

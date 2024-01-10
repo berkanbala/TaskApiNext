@@ -15,7 +15,13 @@ export default function Dashboard() {
 
   return (
     <div className={styles.container}>
-      <input type="text" value={search} onChange={handleChange} />
+      <h1>Filter</h1>
+      <input
+        placeholder="Filter By User"
+        type="text"
+        value={search}
+        onChange={handleChange}
+      />
 
       <div className={styles.content}>
         {useFilter(userList.users, search).map((item: IUser) => (

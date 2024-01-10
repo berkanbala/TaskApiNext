@@ -6,7 +6,13 @@ export default function Header() {
   return (
     <div className={styles.container}>
       <Link href="/">
-        <Image alt="home icon" src={Logo} width={32} height={32} />
+        <Image
+          alt="home icon"
+          src={Logo}
+          width={32}
+          height={32}
+          className={styles.logo}
+        />
       </Link>
       <ul>
         <li>
@@ -16,7 +22,7 @@ export default function Header() {
           <Link href="/posts">Posts</Link>
         </li>
         <li>
-          <Link href="/create">create post</Link>
+          <Link href="/create">Create post</Link>
         </li>
       </ul>
     </div>

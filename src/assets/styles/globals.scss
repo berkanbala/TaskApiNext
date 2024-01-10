@@ -4,17 +4,24 @@
   box-sizing: border-box;
   outline: 0;
   list-style: none;
-  text-decoration: none;
+  text-decoration: none !important;
+  user-select: none;
   user-drag: none;
   -webkit-user-drag: none;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: Inter-Regular, source-code-pro, -apple-system, BlinkMacSystemFont,
+    Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
 body {
   // min-height: 100vh;
   // background-color: rgba(156, 153, 149, 0.295);
   overflow-x: hidden;
+}
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
 }
 
 ul,

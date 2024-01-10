@@ -42,10 +42,10 @@ export default function UserDetails() {
           />
         )}
         <div className={styles.info}>
-          E-Mail: {user.email} <br />
-          CITY: {user?.location?.city} <br />
-          COUNTRY: {user?.location?.country} <br />
-          STATE: {user?.location?.state} <br />
+          <span>COUNTRY: {user?.location?.country}</span>
+          <span>CITY: {user?.location?.city}</span>
+          <span>STATE: {user?.location?.state}</span>
+          <span>E-Mail: {user.email}</span>
         </div>
       </div>
     </div>

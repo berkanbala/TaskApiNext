@@ -38,4 +38,24 @@
       color: #000;
     }
   }
+
+  .logo {
+    animation: loader 1.45s infinite;
+    // background-color: red;
+    width: 50px;
+    height: 50px;
+    color: #00136c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@keyframes loader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
