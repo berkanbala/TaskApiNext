@@ -25,3 +25,14 @@
     outline: none;
   }
 }
+
+.disabled {
+  opacity: 0.5;
+  background-color: #ccc;
+  cursor: not-allowed;
+
+  &:hover {
+    background-position: unset;
+    transition: unset;
+  }
+}

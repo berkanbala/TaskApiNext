@@ -1,10 +1,11 @@
 "use client";
-import { useAppContext } from "@/common/context/appContext";
 import styles from "./dashboard.module.scss";
 import UserCard from "@/custom/components/userCard/userCard";
+import { useAppContext } from "@/common/context/appContext";
 import { IUser } from "@/common/models/users/users";
 import { useState } from "react";
 import { useFilter } from "@/common/hooks/useFilter";
+import { Input } from "@/common/components/ui/input/input";
 
 export default function Dashboard() {
   const { userList } = useAppContext();
@@ -16,7 +17,7 @@ export default function Dashboard() {
   return (
     <div className={styles.container}>
       <h1>Filter</h1>
-      <input
+      <Input
         placeholder="Filter By User"
         type="text"
         value={search}

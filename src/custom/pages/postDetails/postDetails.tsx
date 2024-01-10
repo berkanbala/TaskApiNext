@@ -1,10 +1,8 @@
 "use client";
-import { useEffect, useState } from "react";
 import styles from "./postDetails.module.scss";
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { showNotification } from "@/common/configs/notification";
-import { getUserById } from "@/common/services/userService";
-import Image from "next/image";
 import { getPostById } from "@/common/services/postService";
 import { IPostDetails } from "@/common/models/posts";
 

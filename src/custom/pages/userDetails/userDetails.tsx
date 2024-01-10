@@ -1,11 +1,11 @@
 "use client";
-import { useEffect, useState } from "react";
 import styles from "./userDetails.module.scss";
+import Image from "next/image";
+import { useEffect, useState } from "react";
 import { IUserDetails } from "@/common/models/users/userDetails";
 import { usePathname } from "next/navigation";
 import { showNotification } from "@/common/configs/notification";
 import { getUserById } from "@/common/services/userService";
-import Image from "next/image";
 
 export default function UserDetails() {
   const [user, setUser] = useState<IUserDetails>({} as any);

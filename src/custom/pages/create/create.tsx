@@ -4,6 +4,7 @@ import styles from "./create.module.scss";
 import { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import { Button } from "@/common/components/ui/button/button";
+import { Input } from "@/common/components/ui/input/input";
 
 export default function Create() {
   const [isMounted, setIsMounted] = useState(false);
@@ -17,8 +18,6 @@ export default function Create() {
     { value: "poodle", label: "Poodle" },
     { value: "chihuahua", label: "Chihuahua" },
   ];
-
-  const [a, b] = useState("s");
 
   const { values, handleChange, setFieldValue, handleSubmit } = useFormik({
     initialValues: {
@@ -45,19 +44,20 @@ export default function Create() {
       <form onSubmit={handleSubmit} className={styles.form}>
         <div className={styles.addImage}>
           <span>Image URL</span>
-          <input
+          <Input
             type="text"
             name="image"
+            value={values.image}
             onChange={handleChange}
             placeholder="Add an imgur url..."
-            value={values.name}
             disabled={loading}
           />
         </div>
         <div className={styles.addDescription}>
           <span>Description</span>
-          <input
-            name="text"
+          <Input
+            type="text"
+            name="description"
             value={values.description}
             onChange={handleChange}
             placeholder="Add a description..."
@@ -80,7 +80,13 @@ export default function Create() {
           ) : null}
         </div>
         <div className={styles.formButton}>
-          <Button type="submit" text={"Submit"} />
+          <Button
+            type="submit"
+            text={"Submit"}
+            // disabled={Object.values(values).some(
+            //   (formValue) => formValue === ""
+            // )}
+          />
         </div>
       </form>
     </div>

@@ -5,6 +5,7 @@ import { AppContextProvider } from "@/common/context/appContext";
 import Header from "@/common/components/header/header";
 import "react-toastify/dist/ReactToastify.css";
 import "@/assets/styles/globals.scss";
+import Head from "next/head";
 
 const robotFlex = Roboto_Flex({
   weight: ["400", "500", "700"],
@@ -24,7 +25,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="tr">
+    <html lang="en">
+      <Head>
+        <link rel="icon" href="/media/Logo.png" sizes="any" />
+      </Head>
       <body className={robotFlex.className} suppressHydrationWarning>
         <AppContextProvider>
           <Header />
