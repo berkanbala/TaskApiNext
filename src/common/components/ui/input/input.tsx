@@ -6,6 +6,7 @@ export const Input = (props: any) => {
 
   return (
     <input
+      required
       disabled={disabled}
       onChange={onChange}
       value={value}

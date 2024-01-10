@@ -1,13 +1,18 @@
 "use client";
 import Select from "react-select";
-import styles from "./create.module.scss";
+import styles from "./edit.module.scss";
 import { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import { Button } from "@/common/components/ui/button/button";
 import { Input } from "@/common/components/ui/input/input";
 import { showNotification } from "@/common/configs/notification";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
-export default function Create() {
+export default function Edit() {
+  const router = useRouter();
+  const { id } = router.query;
+
   const [isMounted, setIsMounted] = useState(false);
   const [loading, setLoading] = useState(false);
   const options = [
@@ -20,32 +25,38 @@ export default function Create() {
     { value: "chihuahua", label: "Chihuahua" },
   ];
 
-  const { values, handleChange, setFieldValue, handleSubmit, isSubmitting } =
-    useFormik({
-      initialValues: {
-        image: "",
-        description: "",
-        tags: [],
-      },
-      onSubmit: async (values: any, actions: any) => {
-        try {
-          await new Promise((resolve) => setTimeout(resolve, 1000));
-          actions.resetForm();
-          setLoading(true);
-          console.log(values);
-          showNotification("success", "başarıyla eklendi");
-        } catch (error) {
-          showNotification("error", "hata");
-        } finally {
-          setLoading(false);
-        }
-      },
-    });
+  const { values, handleChange, setFieldValue, handleSubmit } = useFormik({
+    initialValues: {
+      image: "",
+      description: "",
+      tags: [],
+    },
+    onSubmit: async (values: any, actions: any) => {
+      try {
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+        actions.resetForm();
+        setLoading(true);
+        console.log(values);
+        router.push(`/${id}`);
+        showNotification("success", "başarıyla düzeltildi");
+      } catch (error) {
+        showNotification("error", "hata");
+      } finally {
+        setLoading(false);
+      }
+    },
+  });
 
   useEffect(() => setIsMounted(true), []);
   return (
     <div className={styles.container}>
-      <h1>Create Post</h1>
+      <div className={styles.title}>
+        <Link href={`/${id}`}>
+          <Button>Go Back</Button>
+        </Link>
+        <h1>Edit Post</h1>
+      </div>
+
       <form onSubmit={handleSubmit} className={styles.form}>
         <div className={styles.addImage}>
           <span>Image URL</span>
@@ -86,21 +97,11 @@ export default function Create() {
               options={options}
               isDisabled={loading}
               value={values.tags}
-              // value={
-              //   options ? options.find((option) => option.value === values) : ""
-              // }
             />
           ) : null}
         </div>
         <div className={styles.formButton}>
-          <Button
-            disabled={isSubmitting}
-            type="submit"
-            text={"Submit"}
-            // disabled={Object.values(values).some(
-            //   (formValue) => formValue === ""
-            // )}
-          />
+          <Button type="submit" text={"Submit Edit"} />
         </div>
       </form>
     </div>
