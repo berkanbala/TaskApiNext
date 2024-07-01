@@ -1,3 +1,5 @@
+@import "../../../assets/styles/variable.scss";
+
 .container {
   display: flex;
   flex-direction: column;
@@ -18,8 +20,8 @@
     outline: 0 !important;
     position: relative;
     transition: all 100ms;
-    background-color: rgb(255, 255, 255);
-    border-color: rgb(204, 204, 204);
+    background-color: $white;
+    border-color: $white2;
     border-radius: 4px;
     border-style: solid;
     border-width: 1px;

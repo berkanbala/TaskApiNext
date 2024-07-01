@@ -1,14 +1,13 @@
 "use client";
+import Link from "next/link";
 import Select from "react-select";
 import styles from "./edit.module.scss";
-import { useEffect, useState } from "react";
-import { useFormik } from "formik";
-import { Button } from "@/common/components/ui/button/button";
 import { Input } from "@/common/components/ui/input/input";
+import { Button } from "@/common/components/ui/button/button";
+import { useFormik } from "formik";
+import { usePathname } from "next/navigation";
 import { showNotification } from "@/common/configs/notification";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import { useParams, usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export default function Edit() {
   const pathname = usePathname();
@@ -39,7 +38,6 @@ export default function Edit() {
         actions.resetForm();
         setLoading(true);
         console.log(values);
-        // router.push(`/${id}`);
         showNotification("success", "başarıyla düzeltildi");
       } catch (error) {
         showNotification("error", "hata");

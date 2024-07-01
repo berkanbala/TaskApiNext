@@ -10,5 +10,4 @@ export interface IPost {
     lastName: string;
     picture: string;
   };
-  // publishDate: string;
 }

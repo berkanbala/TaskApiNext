@@ -1,12 +1,12 @@
 "use client";
 import styles from "./posts.module.scss";
 import PostCard from "@/custom/components/postCard/postCard";
-import { useEffect, useState } from "react";
-import { showNotification } from "@/common/configs/notification";
-import { getPosts } from "@/common/services/postService";
-import { postFilter } from "../../../common/hooks/postFilter";
 import { IPost } from "@/common/models/posts/posts";
 import { Input } from "@/common/components/ui/input/input";
+import { getPosts } from "@/common/services/postService";
+import { postFilter } from "../../../common/hooks/postFilter";
+import { showNotification } from "@/common/configs/notification";
+import { useEffect, useState } from "react";
 
 export default function Posts() {
   const [posts, setPosts] = useState<IPost[]>([]);

@@ -1,11 +1,11 @@
 "use client";
 import styles from "./dashboard.module.scss";
 import UserCard from "@/custom/components/userCard/userCard";
-import { useAppContext } from "@/common/context/appContext";
 import { IUser } from "@/common/models/users/users";
+import { Input } from "@/common/components/ui/input/input";
 import { useState } from "react";
 import { useFilter } from "@/common/hooks/useFilter";
-import { Input } from "@/common/components/ui/input/input";
+import { useAppContext } from "@/common/context/appContext";
 
 export default function Dashboard() {
   const { userList } = useAppContext();

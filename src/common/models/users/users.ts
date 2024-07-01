@@ -4,8 +4,6 @@ export interface IUser {
   firstName: string;
   lastName: string;
   picture: string;
-  // image: string;
-  // text: string;
 }
 export interface IAllUsers {
   firstName: string;

@@ -3,9 +3,9 @@ import { Roboto_Flex } from "next/font/google";
 import { ToastContainer } from "react-toastify";
 import { AppContextProvider } from "@/common/context/appContext";
 import Header from "@/common/components/header/header";
+import Head from "next/head";
 import "react-toastify/dist/ReactToastify.css";
 import "@/assets/styles/globals.scss";
-import Head from "next/head";
 
 const robotFlex = Roboto_Flex({
   weight: ["400", "500", "700"],

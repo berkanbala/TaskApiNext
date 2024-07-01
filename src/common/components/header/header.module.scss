@@ -1,3 +1,5 @@
+@import "../../../assets/styles/variable.scss";
+
 .container {
   display: flex;
   justify-content: space-around;
@@ -5,10 +7,9 @@
   width: 100%;
   margin: auto;
   padding: 22px;
-  background-color: rgb(244, 244, 244);
-  box-shadow: 0.2px 0.5px 0.6px hsl(235 30% 62% / 0.25),
-    0.3px 0.8px 1px -1.2px hsl(235 30% 62% / 0.25),
-    0.8px 1.9px 2.3px -2.5px hsl(235 30% 62% / 0.25);
+  background-color: $white1;
+  box-shadow: 0.2px 0.5px 0.6px $blue3, 0.3px 0.8px 1px -1.2px $blue3,
+    0.8px 1.9px 2.3px -2.5px $blue3;
 
   ul {
     display: flex;
@@ -35,16 +36,15 @@
     }
 
     a {
-      color: #000;
+      color: $black;
     }
   }
 
   .logo {
     animation: loader 1.45s infinite;
-    // background-color: red;
     width: 50px;
     height: 50px;
-    color: #00136c;
+    color: $blue2;
     display: flex;
     justify-content: center;
     align-items: center;

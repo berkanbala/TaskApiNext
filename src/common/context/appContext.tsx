@@ -15,7 +15,6 @@ export const AppContextProvider = ({ children }: Props) => {
       try {
         const response = await getUsers();
         setUsers([...response]);
-        // console.log(response);
       } catch (error: any) {
         showNotification("error", error);
       }

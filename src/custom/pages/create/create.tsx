@@ -1,10 +1,10 @@
 "use client";
 import Select from "react-select";
 import styles from "./create.module.scss";
-import { useEffect, useState } from "react";
-import { useFormik } from "formik";
-import { Button } from "@/common/components/ui/button/button";
 import { Input } from "@/common/components/ui/input/input";
+import { Button } from "@/common/components/ui/button/button";
+import { useFormik } from "formik";
+import { useEffect, useState } from "react";
 import { showNotification } from "@/common/configs/notification";
 
 export default function Create() {
@@ -106,21 +106,11 @@ export default function Create() {
                   top: 40,
                 }),
               }}
-              // value={
-              //   options ? options.find((option) => option.value === values) : ""
-              // }
             />
           ) : null}
         </div>
         <div className={styles.formButton}>
-          <Button
-            disabled={isSubmitting}
-            type="submit"
-            text={"Submit"}
-            // disabled={Object.values(values).some(
-            //   (formValue) => formValue === ""
-            // )}
-          />
+          <Button disabled={isSubmitting} type="submit" text={"Submit"} />
         </div>
       </form>
     </div>

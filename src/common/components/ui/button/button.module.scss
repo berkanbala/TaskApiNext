@@ -1,8 +1,10 @@
+@import "../../../../assets/styles/variable.scss";
+
 .container {
   width: 200px;
   font-size: 16px;
   font-weight: 600;
-  color: #fff;
+  color: $white;
   cursor: pointer;
   margin-top: 20px;
   height: 55px;
@@ -12,9 +14,9 @@
   border-radius: 50px;
   transition: all 0.4s ease-in-out;
 
-  background-color: rgb(51, 51, 51);
-  color: rgb(238, 238, 238);
-  border-color: hsl(0, 0%, 40%);
+  background-color: $black2;
+  color: $white3;
+  border-color: $black3;
 
   &:hover {
     background-position: 100% 0;
@@ -28,7 +30,7 @@
 
 .disabled {
   opacity: 0.5;
-  background-color: #ccc;
+  background-color: $white2;
   cursor: not-allowed;
 
   &:hover {
